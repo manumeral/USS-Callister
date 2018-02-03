@@ -9,6 +9,9 @@ let GameManager = {
     },
     startGame() {
         this.game.state.start(GAME_CONST.STATES.BOOT);
+    },
+    startState(state) {
+        this.game.state.start(state);
     }
 };
 

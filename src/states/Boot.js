@@ -6,6 +6,8 @@ export class Boot extends Phaser.State {
     preload() {
         console.log("Preloading Boot State");
         this.load.image('universe', "assets/images/backGroundTheme.jpg");
+        this.load.image('progressBackground', 'assets/images/progressBackground.png');
+        this.load.image('progressBar', 'assets/images/progressBar.png');
     }
 
     create() {
