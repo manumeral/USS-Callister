@@ -16,6 +16,11 @@ const GAME_CONST = {
             THEME: 0.2,
             TAP: 0.1
         }
+    },
+    SPEED: {
+        METEOR : 400,
+        SHOOT : 600,
+        SPACE_SHIP : 0.08
     }
 };
 
