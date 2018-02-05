@@ -1,6 +1,5 @@
 'use strict';
 
-import Universe from "../objects/widgets/images/Universe";
 import Planet from "../objects/widgets/sprites/Planet";
 import SpaceShip from "../objects/widgets/images/SpaceShip";
 import Shoot from "../objects/Widgets/sprites/Shoot";
@@ -71,6 +70,7 @@ export class Play extends Phaser.State {
                 meteor.destroy();
                 this.healthMetric-=12.5;
                 this._decreaseHealth();
+                window.navigator.vibrate(1000);
                 if(this.healthMetric <= 0 ) {
                     this._endGame();
                 }
@@ -87,9 +87,7 @@ export class Play extends Phaser.State {
 
     shutdown() {
         for (let i = this.game.stage.children.length - 1; i >= 0; i--) {
-            if (!(this.game.stage.children[i] instanceof Universe)) {
-                this.game.stage.removeChild(this.game.stage.children[i]);
-            }
+            this.game.stage.removeChild(this.game.stage.children[i]);
         }
     }
 
