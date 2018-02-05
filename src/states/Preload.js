@@ -4,10 +4,18 @@ import Universe from "../objects/widgets/images/Universe";
 import PlayButton from "../objects/widgets/buttons/PlayButton";
 import GAME_CONST from "../const/GAME_CONST";
 
+var WebFontConfig = {
+    active: function () {
+        phaserGame.time.events.add(Phaser.Timer.SECOND, createText, this);
+    }
+};
+
 export class Preload extends Phaser.State {
     preload() {
         console.log("Preloading Preload State");
         this.loadingComplete = false;
+        this.game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+        this.add.text(0, 0, "fontFix", {font: "1px nunito-regular", fill: "#000000"});
         this._createBackground();
         this._createLoader();
         this.load.onLoadComplete.addOnce(this._onLoadComplete, this);
@@ -17,8 +25,9 @@ export class Preload extends Phaser.State {
         this.load.image('meteor', 'assets/images/asteroid_burned.png');
         this.load.image('playGame', 'assets/images/playGame.png');
         this.load.spritesheet('shoot', 'assets/images/shoot.png', 153, 153);
-        this.load.audio('gameSound', 'assets/audio/Theme.mp3');
+        // this.load.audio('gameSound', 'assets/audio/Theme.mp3');
         this.load.audio('tapSound', 'assets/audio/Tap.mp3');
+        this.load.audio('gameSound', 'assets/audio/Metalmania.mp3');
     }
 
     create() {
