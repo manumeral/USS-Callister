@@ -3,11 +3,18 @@
 import GAME_CONST from "../const/GAME_CONST";
 import PlayButton from "../objects/widgets/buttons/PlayButton";
 
+var WebFontConfig = {
+    active: function () {
+        phaserGame.time.events.add(Phaser.Timer.SECOND, createText, this);
+    }
+};
 
 export class Preload extends Phaser.State {
     preload() {
         console.log("Preloading Preload State");
         this.loadingComplete = false;
+        this.game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+        this.add.text(0, 0, "fontFix", {font: "1px nunito-regular", fill: "#000000"});
         this._createLoader();
         this.load.onLoadComplete.addOnce(this._onLoadComplete, this);
         this.load.image('planet', 'assets/images/planet.png');

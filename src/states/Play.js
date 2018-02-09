@@ -5,6 +5,7 @@ import SpaceShip from "../objects/widgets/images/SpaceShip";
 import Shoot from "../objects/Widgets/sprites/Shoot";
 import GAME_CONST from "../const/GAME_CONST";
 import Meteor from "../objects/widgets/sprites/Meteor";
+import TextUtil from "../util/TextUtil";
 
 export class Play extends Phaser.State {
     preload() {
@@ -20,6 +21,7 @@ export class Play extends Phaser.State {
     create() {
         this._createPlanet();
         this._createSpaceShip();
+        this._createScoreText();
         this.game.input.onTap.add(this._changeShipDirection, this);
     }
 
@@ -64,5 +66,23 @@ export class Play extends Phaser.State {
     _changeShipDirection() {
         this.spaceShipThrust *= -1;
         this.game.camera.shake(0.005, 300);
+    }
+
+    _createScoreText() {
+        this.scoreText = TextUtil.createText(this.game, {
+            positionX: 100,
+            positionY: 100,
+            message: this.score,
+            align: "center",
+            backgroundColor: "#000000",
+            fill: "#fefefe",
+            font: 'nunito-regular',
+            fontSize: "60px",
+            fontWeight: 800,
+            wordWrapWidth: 355,
+            anchorX: 0.5,
+            anchorY: 0
+        });
+        this.game.stage.addChild(this.scoreText);
     }
 }
