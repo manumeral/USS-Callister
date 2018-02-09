@@ -53,6 +53,16 @@ export class Preload extends Phaser.State {
     }
 
     _onLoadComplete() {
+        this.sound = this.game.add.audio('gameSound');
+        this.tapSound = this.game.add.audio('tapSound');
+        this.game.sound.setDecodedCallback([this.sound, this.tapSound], this._start, this);
+    }
+
+    _start() {
+        this.sound.play();
+        this.sound.mute = false;
+        this.sound.loop = true;
+        this.sound.loopFull(GAME_CONST.MUSIC.VOLUME.THEME);
         this.loadingComplete = true;
     }
 
