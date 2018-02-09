@@ -1,3 +1,4 @@
+
 "use strict";
 
 import GAME_CONST from "../const/GAME_CONST";
@@ -9,8 +10,10 @@ let GameManager = {
     },
     startGame() {
         this.game.state.start(GAME_CONST.STATES.BOOT);
+    },
+    startState(state) {
+        this.game.state.start(state);
     }
 };
 
 export default GameManager;
-

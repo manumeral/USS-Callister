@@ -1,6 +1,7 @@
 'use strict';
 
 import GAME_CONST from "../const/GAME_CONST";
+import PlayButton from "../objects/widgets/buttons/PlayButton";
 
 
 export class Preload extends Phaser.State {
@@ -24,10 +25,11 @@ export class Preload extends Phaser.State {
     }
 
     update() {
-        if(this.loadingComplete) {
+        if (this.loadingComplete) {
             console.log("Loading Complete");
-            // this.progressBackground.destroy();
-            // this.progressBar.destroy();
+            this.progressBackground.destroy();
+            this.progressBar.destroy();
+            this._createPlayButton();
             this.loadingComplete = false;
         }
     }
@@ -52,5 +54,17 @@ export class Preload extends Phaser.State {
 
     _onLoadComplete() {
         this.loadingComplete = true;
+    }
+
+    _createPlayButton() {
+        this.playButtton = new PlayButton({
+            game: this.game,
+            posX: this.world.centerX,
+            posY: this.world.centerY,
+            label: 'playGame',
+            anchorX: 0.5,
+            anchorY: 0.5
+        });
+        this.game.stage.addChild(this.playButtton);
     }
 }
