@@ -19,6 +19,7 @@ export class Play extends Phaser.State {
     }
 
     create() {
+        this._createHealth();
         this._createPlanet();
         this._createSpaceShip();
         this._createScoreText();
@@ -37,7 +38,14 @@ export class Play extends Phaser.State {
         }
     }
 
-
+    _createHealth() {
+        this.healthMetric = 100;
+        this.health = this.game.add.graphics(0, 0);
+        this.game.stage.addChild(this.health);
+        this.health.beginFill(0XFFBC3E);
+        this.health.arc(this.world.centerX, this.world.centerY, 130, this.game.math.degToRad(-90.00),
+            this.game.math.degToRad(-89.9999), true, 360);
+    }
 
     _createPlanet() {
         this.planet = new Planet({
