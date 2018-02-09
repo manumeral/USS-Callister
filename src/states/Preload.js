@@ -22,6 +22,7 @@ export class Preload extends Phaser.State {
         this.load.image('asteroid', 'assets/images/meteor.png');
         this.load.image('meteor', 'assets/images/asteroid_burned.png');
         this.load.image('playGame', 'assets/images/playGame.png');
+        this.load.image('scoreboard', 'assets/images/leaderboard.png');
         this.load.spritesheet('shoot', 'assets/images/shoot.png', 153, 153);
         // this.load.audio('gameSound', 'assets/audio/Theme.mp3');
         this.load.audio('tapSound', 'assets/audio/Tap.mp3');

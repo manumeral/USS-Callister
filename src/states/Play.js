@@ -174,6 +174,11 @@ export class Play extends Phaser.State {
     }
 
     _endGame() {
+        kapow.invokeRPC('postScore', {"score": this.score}, function() {
+            console.log("Success Posting Score");
+        }, function(error) {
+            console.log("Failure Posting score", error);
+        });
         this.gameEndText = TextUtil.createText(this.game, {
             positionX: this.world.centerX,
             positionY: 560,
@@ -190,6 +195,7 @@ export class Play extends Phaser.State {
         });
         this.game.stage.addChild(this.gameEndText);
         this._createPlayButton();
+        this._drawScoreboard();
     }
 
     _createPlayButton() {
@@ -203,5 +209,18 @@ export class Play extends Phaser.State {
             callback: this.shutdown
         });
         this.game.stage.addChild(this.playButtton);
+    }
+
+    _drawScoreboard() {
+        this.scoreboard = this.game.add.button(this.game.world.centerX, 1800, "scoreboard", this._renderScoreboard, this);
+        this.scoreboard.anchor.setTo(0.5, 0);
+        this.game.stage.addChild(this.scoreboard);
+    }
+
+    _renderScoreboard() {
+        kapow.boards.displayScoreboard({
+            "metric":"score",
+            "interval":"daily"
+        });
     }
 }
