@@ -8,7 +8,19 @@ const GAME_CONST = {
     },
     STATES: {
         BOOT: "Boot",
-        PRELOAD: "Preload"
+        PRELOAD: "Preload",
+        PLAY: "Play"
+    },
+    MUSIC: {
+        VOLUME: {
+            THEME: 0.2,
+            TAP: 0.1
+        }
+    },
+    SPEED: {
+        METEOR : 400,
+        SHOOT : 600,
+        SPACE_SHIP : 0.08
     }
 };
 

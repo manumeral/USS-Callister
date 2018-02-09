@@ -4,8 +4,9 @@ import GAME_CONST from "../const/GAME_CONST";
 
 export class Boot extends Phaser.State {
     preload() {
-        console.log("Preloading Boot State");
-        this.load.image('universe', "assets/images/backGroundTheme.jpg");
+        console.log("Pre-loading Boot State");
+        this.load.image('progressBackground', 'assets/images/progressBackground.png');
+        this.load.image('progressBar', 'assets/images/progressBar.png');
     }
 
     create() {
